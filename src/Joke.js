@@ -20,12 +20,12 @@ class Joke extends Component {
         let scoreClass="Score";
 
         let emojis = [
-            <i class="emoji em em-no_mouth" aria-label="FACE WITHOUT MOUTH"></i>,
-            <i class="emoji em em-rolling_on_the_floor_laughing" aria-label="ROLLING ON THE FLOOR LAUGHING"></i>,
-            <i class="emoji em em-laughing" aria-label="SMILING FACE WITH OPEN MOUTH AND TIGHTLY-CLOSED EYES"></i>,
-            <i class="emoji em em-smiley" aria-label="SMILING FACE WITH OPEN MOUTH"></i>,
-            <i class="emoji em em-expressionless" aria-label="EXPRESSIONLESS FACE"></i>,
-            <i class="emoji em em-angry" aria-label="ANGRY FACE"></i>,
+            <i className="emoji em em-no_mouth" aria-label="FACE WITHOUT MOUTH"></i>,
+            <i className="emoji em em-rolling_on_the_floor_laughing" aria-label="ROLLING ON THE FLOOR LAUGHING"></i>,
+            <i className="emoji em em-laughing" aria-label="SMILING FACE WITH OPEN MOUTH AND TIGHTLY-CLOSED EYES"></i>,
+            <i className="emoji em em-smiley" aria-label="SMILING FACE WITH OPEN MOUTH"></i>,
+            <i className="emoji em em-expressionless" aria-label="EXPRESSIONLESS FACE"></i>,
+            <i className="emoji em em-angry" aria-label="ANGRY FACE"></i>,
         ];
 
         let emoji_index = 0;
@@ -67,7 +67,7 @@ class Joke extends Component {
                         <div className={scoreClass}>
                             {this.props.score}
                         </div>
-                        
+
                         <i onClick={this.handleVoteUp} className="vote-Btn fa-solid fa-arrow-up"/>
                         
                         

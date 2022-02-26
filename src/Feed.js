@@ -3,7 +3,6 @@ import axios from 'axios';
 import Joke from './Joke';
 import "./Feed.css";
 import laughing from "./laughing.png";
-import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 
 class Feed extends Component {
     static defaultProps = {
