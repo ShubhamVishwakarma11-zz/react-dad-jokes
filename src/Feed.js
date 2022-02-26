@@ -14,6 +14,7 @@ class Feed extends Component {
             jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]"),
             loading: false
         };
+        this.seenJokes = new Set(this.state.jokes.map(j => j.joke));
         this.add_jokes = this.add_jokes.bind(this);
         this.getNewJokes = this.getNewJokes.bind(this);
         this.VoteUp = this.VoteUp.bind(this);
@@ -21,19 +22,26 @@ class Feed extends Component {
     }
 
     async add_jokes() {
-        let new_jokes = [];
-        for (let i=0;i<this.props.NewJokesNumber;i++) {
+        try {
+            let new_jokes = [];
+        while(new_jokes.length < this.props.NewJokesNumber) {
             let res = await axios.get("https://icanhazdadjoke.com/", 
             {headers:{Accept:"application/json"}});
-            new_jokes.push({
-                joke: res.data.joke,
-                id:res.data.id, 
-                UpScore:0,
-                DownScore: 0,
-                score:0,
-                rating: 1
-            });
-            
+            if(!this.seenJokes.has(res.data.joke)) {
+                new_jokes.push({
+                    joke: res.data.joke,
+                    id:res.data.id, 
+                    UpScore:0,
+                    DownScore: 0,
+                    score:0,
+                    rating: 1
+                });
+                this.seenJokes = new Set(this.state.jokes.map(j => j.joke));
+            }
+            else {
+                console.log("Found a duplicate Joke... ");
+                console.log(res.data.joke);
+            }   
         }
         this.setState(currState => (
             { jokes: [...currState.jokes, ...new_jokes], loading:false}
@@ -41,6 +49,11 @@ class Feed extends Component {
         () => {
             window.localStorage.setItem("jokes",JSON.stringify(this.state.jokes));
         });
+        } catch(e) {
+            alert(e);
+            this.setState({loading: false});
+        }
+        
     }
 
     getNewJokes() {
