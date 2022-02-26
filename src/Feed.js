@@ -46,8 +46,8 @@ class Feed extends Component {
             let modified_jokes = currState.jokes.map(joke => {
                 let modified_joke = joke;
                 if (joke.id === id ) {
-                    joke.UpScore = joke.UpScore + 0.5;
-                    joke.score = joke.score + 0.5;
+                    joke.UpScore = joke.UpScore + 1;
+                    joke.score = joke.score + 1;
                     joke.rating = (joke.UpScore)/(joke.DownScore+1);
                 }
                 return modified_joke;
@@ -61,8 +61,8 @@ class Feed extends Component {
             let modified_jokes = currState.jokes.map(joke => {
                 let modified_joke = joke;
                 if (joke.id === id ) {
-                    joke.DownScore = joke.DownScore + 0.5;
-                    joke.score = joke.score - 0.5;
+                    joke.DownScore = joke.DownScore + 1;
+                    joke.score = joke.score - 1;
                     joke.rating = (joke.UpScore)/(joke.DownScore+1);
                 }
                 return modified_joke;
