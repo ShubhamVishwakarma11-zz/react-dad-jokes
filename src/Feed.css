@@ -57,3 +57,7 @@
     background-color:#001D3D; 
     transform: scale(1.1);
 }
+
+.loading-emoji {
+    font-size: 8rem;
+}

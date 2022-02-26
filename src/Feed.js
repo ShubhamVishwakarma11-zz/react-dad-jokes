@@ -12,9 +12,11 @@ class Feed extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]")
+            jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]"),
+            loading: false
         };
         this.add_jokes = this.add_jokes.bind(this);
+        this.getNewJokes = this.getNewJokes.bind(this);
         this.VoteUp = this.VoteUp.bind(this);
         this.VoteDown = this.VoteDown.bind(this);
     }
@@ -35,16 +37,20 @@ class Feed extends Component {
             
         }
         this.setState(currState => (
-            { jokes: [...currState.jokes, ...new_jokes]}
+            { jokes: [...currState.jokes, ...new_jokes], loading:false}
         ),
         () => {
             window.localStorage.setItem("jokes",JSON.stringify(this.state.jokes));
         });
     }
 
+    getNewJokes() {
+        this.setState({loading:true},this.add_jokes);
+    }
+
     componentDidMount(){
         if (this.state.jokes.length === 0) 
-            this.add_jokes();
+            this.getNewJokes();
     }
 
     VoteUp(id) {
@@ -84,13 +90,21 @@ class Feed extends Component {
     }
 
     render() {
+        if (this.state.loading === true) {
+            return (
+                <div>
+                    <i className = "loading-emoji far fa-smile fa-spin"></i>
+                    <h3> Loading jokes ...</h3>
+                </div>
+            )
+        }
         return (
             <div className="Feed">
                 <div className="Feed-Sidebar">
                     <h2 className='Feed-Sidebar-Title'> <strong>Dad</strong> Jokes</h2>
                     <img className="Feed-Emote" src={laughing} alt="rofl-emoji"/>
                     <div>
-                    <button className="Feed-Btn" onClick={this.add_jokes}>Add Jokes </button>
+                    <button className="Feed-Btn" onClick={this.getNewJokes}>Add Jokes </button>
                     </div>
                 </div>
                 
