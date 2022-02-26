@@ -36,6 +36,35 @@
     width: 6rem;
 }
 
+.Feed-Emote:hover {
+    animation-name: spin-emoji;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+}
+
+@keyframes spin-emoji {
+    0% {
+        transform: rotate(0deg);
+    }15% {
+        transform: rotate(20deg);
+    }30% {
+        transform: rotate(0deg);
+    }45% {
+        transform: rotate(-10deg);
+    }60% {
+        transform: rotate(0deg);
+    }75% {
+        transform: rotate(10deg);
+    }80% {
+        transform: rotate(0deg);
+    }90% {
+        transform: rotate(-5deg);
+    }100% {
+        transform: rotate(0deg);
+    }
+}
+
 .Feed-Btn {
     /* background: linear-gradient(145deg, 
     #003566 0%,
@@ -61,3 +90,4 @@
 .loading-emoji {
     font-size: 10rem;
 }
+
