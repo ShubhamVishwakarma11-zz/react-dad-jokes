@@ -3,6 +3,7 @@ import axios from 'axios';
 import Joke from './Joke';
 import "./Feed.css";
 import laughing from "./laughing.png";
+import { faWindowRestore } from '@fortawesome/free-solid-svg-icons';
 
 class Feed extends Component {
     static defaultProps = {
@@ -11,8 +12,8 @@ class Feed extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            jokes: []
-        }
+            jokes: JSON.parse(window.localStorage.getItem("jokes") || "[]")
+        };
         this.add_jokes = this.add_jokes.bind(this);
         this.VoteUp = this.VoteUp.bind(this);
         this.VoteDown = this.VoteDown.bind(this);
@@ -31,14 +32,19 @@ class Feed extends Component {
                 score:0,
                 rating: 1
             });
+            
         }
         this.setState(currState => (
             { jokes: [...currState.jokes, ...new_jokes]}
-        ));
+        ),
+        () => {
+            window.localStorage.setItem("jokes",JSON.stringify(this.state.jokes));
+        });
     }
 
-    async componentDidMount(){
-        this.add_jokes();
+    componentDidMount(){
+        if (this.state.jokes.length === 0) 
+            this.add_jokes();
     }
 
     VoteUp(id) {
@@ -53,6 +59,9 @@ class Feed extends Component {
                 return modified_joke;
             })
             return {jokes: modified_jokes};
+        },
+        () => {
+            window.localStorage.setItem("jokes",JSON.stringify(this.state.jokes));
         })
     }
 
@@ -68,6 +77,9 @@ class Feed extends Component {
                 return modified_joke;
             })
             return {jokes: modified_jokes};
+        },
+        () => {
+            window.localStorage.setItem("jokes",JSON.stringify(this.state.jokes));
         })
     }
 
