@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+.Feed{
+    width: 70%;
+    height: 70%;
+    display: flex;
+}
+
+.Feed-Sidebar {
+    /* background-color: #EB5E28; */
+    background-color:  #001D3D;
+    width: 30%;
+    text-align: center;
+    transform: scale(1.1);
+    border-radius: 0.5rem;
+}
+
+.Feed-Sidebar-Title{
+    font-family: 'Indie Flower', cursive;
+    margin: 2rem 0 0;
+    font-size: 4rem;
+    color: #DB504A;
+}
+
+
+.Feed-Joke-List {
+    background:none;
+    width: 70%;
+    /* padding: 1rem 2rem; */
+    overflow: scroll;
+    scrollbar-width: none;
+    border-radius: 5px;
+}
+
+.Feed-Emote {
+    width: 6rem;
+}
+
+.Feed-Btn {
+    /* background: linear-gradient(145deg, 
+    #003566 0%,
+    #003566 50%,
+    #FFC300 50%,
+    #FFC300 100%
+     ); */
+     background-color: #DB504A;
+    color: #FFFFFF;  
+    border:none;
+    border-radius: 8px;
+    margin-top: 30px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.4s ease-in;
+}
+
+.Feed-Btn:hover {
+    background-color:#001D3D; 
+    transform: scale(1.1);
+}

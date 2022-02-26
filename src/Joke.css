@@ -1,0 +1,56 @@
+.Joke {
+    margin: 1px;
+    padding: 2px 10px 2px 20px;
+    background-color: #FFFFFC;
+    display: flex;
+    color: #001D3D;
+    justify-content: center;
+    align-items: center;
+    /* align-items: center;
+    justify-content: center;
+    text-align: left; */ 
+}
+
+.Score-card {
+    margin-left: 0;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vote-Btn {
+    margin: 5px;
+    cursor:pointer;
+    font-size: 1.2em;
+}
+
+
+.Score{
+    border: 3px solid orange;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.good-Score {
+    border: 3px solid green;
+}
+.bad-Score {
+    border: 3px solid red;
+}
+
+.Joke-text {
+    margin-left: 20px;
+    width: 85%;
+}
+
+
+.emoji {
+    font-size: 1.5rem;
+}
