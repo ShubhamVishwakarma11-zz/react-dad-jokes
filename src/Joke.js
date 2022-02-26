@@ -62,13 +62,13 @@ class Joke extends Component {
                 <div className='Joke'>
                     <div className='Score-card'>
                         
-                        <i onClick={this.handleVoteDown} className="vote-Btn fa-solid fa-arrow-down"/>
+                        <i onClick={this.handleVoteDown} className="vote-btn-down fa-solid fa-arrow-down"/>
                         
                         <div className={scoreClass}>
                             {this.props.score}
                         </div>
 
-                        <i onClick={this.handleVoteUp} className="vote-Btn fa-solid fa-arrow-up"/>
+                        <i onClick={this.handleVoteUp} className="vote-btn-up fa-solid fa-arrow-up"/>
                         
                         
                     </div>
